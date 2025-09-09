@@ -171,3 +171,5 @@ flowchart TD
 - Replace Ollama with **enterprise-grade LLM APIs** for better chatbot accuracy and continuity.  
 
 ---
+## Credits: IIT Bombay Contingent Members for Dream 11- 
+**Abhijat Bharadwaj | Akshat Singh | Nivesh Maheshwari | Vinay Sutar | Varunav Singh | Riddhi Gadodia | Akshat Jain | Pranav Heggere | Omkar Shirpure | Vansh | Lopamudra | Rakshit Sawarn | Bhumi Sharma | Ananya Priyaroop | Haris Narrendran R | Panav Shah | Aakash | Khushi Wandile | Nidhi Prajapati  | Writam Mallik**
