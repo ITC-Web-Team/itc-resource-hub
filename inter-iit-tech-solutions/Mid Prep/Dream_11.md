@@ -1,18 +1,19 @@
 
-# Problem Statement: Next-Gen Team Builder with Predictive AI (Fantasy Cricket – Dream11)**  
+# Dream11- Next-Gen Team Builder with Predictive AI 
+## [Detailed report by Bombay 76](https://drive.google.com/file/d/1MVW7rrWlRdkzesxn_TkiOh8rfM6fXDjb/view?usp=sharing)
 
 ---
 
 ## 1. Contents  
-1. Problem  
-2. Background  
-3. Solution Overview (Flowchart type)  
-4. Product Design  
-5. Data  
-6. Methods  
-7. Challenges  
-8. Conclusion  
-9. Appendix (Alternatives Tried, Future Work, etc.)  
+1. [Problem](#2-problem)  
+2. [Background](#3-background)  
+3. [Solution Overview](#4-solution-overview-flowchart-type)  
+4. [Product Design](#5-product-design)  
+5. [Data](#6-data)  
+6. [Methods](#7-methods)  
+7. [Challenges](#8-challenges)  
+8. [Conclusion](#9-conclusion)  
+9. [Appendix](#10-appendix)  
 
 ---
 
@@ -35,12 +36,12 @@ Dream11 is India’s largest fantasy sports platform. The challenge is to **pred
   - Optimizing team under **budget + composition** rules.  
 
 **Prior Work:**  
-- Time-series methods (Dickey Fuller, ARIMA).  
+- [Time-series](https://en.wikipedia.org/wiki/Time_series) methods (Dickey Fuller, [ARIMA](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)).  
 - Machine learning (linear regression, decision trees).  
-- Deep learning (LSTMs for sequential data).  
-- Explainable AI (LIME, SHAP).  
+- [Deep learning](https://en.wikipedia.org/wiki/Deep_learning) (LSTMs for sequential data).  
+- [Explainable AI](https://en.wikipedia.org/wiki/Explainable_artificial_intelligence) ([LIME](https://en.wikipedia.org/wiki/LIME_(Local_Interpretable_Model-agnostic_Explanations)), SHAP).  
 
-Despite these, **predicting Dream Team composition** remained a multi-faceted problem → motivating a **dual-model CNN-based approach**.  
+Despite these, **predicting Dream Team composition** remained a multi-faceted problem → motivating a **dual-model [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network)-based approach**.  
 
 ---
 
@@ -57,7 +58,7 @@ flowchart TD
     E --> G[Dream Team Selection - Apply Constraints]
     F --> G
     G --> H[Explainability Layer - LIME]
-    H --> I[User Product: AI Team Builder + Chatbot + Visualizations]
+    H --> I[User Product: AI Team Builder, Chatbot, Visualizations]
 
 ```
 
@@ -114,20 +115,20 @@ flowchart TD
 ## 7. Methods  
 
 ### A. Baseline Experiments  
-- **Regression:** Predicted fantasy points individually. → Unstable due to order sensitivity.  
-- **MLP (Dense Net):** Predicted all 22 simultaneously → MAE ~25–26%. Black-box nature.  
-- **LSTM:** Sequential model (20 time steps × 41 features). → MAPE 35–50% → underperformed.  
+- **[Regression](https://en.wikipedia.org/wiki/Linear_regression):** Predicted fantasy points individually. → Unstable due to order sensitivity.  
+- **[MLP](https://en.wikipedia.org/wiki/Multilayer_perceptron) (Dense Net):** Predicted all 22 simultaneously → MAE ~25–26%. Black-box nature.  
+- **[LSTM](https://en.wikipedia.org/wiki/Long_short-term_memory):** Sequential model (20 time steps × 41 features). → MAPE 35–50% → underperformed.  
 
-### B. Transition to CNN  
+### B. Transition to [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network)  
 - Insight: Match input naturally forms a **2D grid** (players × features). CNNs can capture inter-player relations.  
-- Players ordered by past performance; features grouped (batting, bowling, fielding) → CNN learns local correlations.  
+- Players ordered by past performance; features grouped (batting, bowling, fielding) → [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) learns local correlations.  
 
-### C. Final Architecture – Dual CNN Models  
+### C. Final Architecture – Dual [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) Models  
 
 **Input:** 22 players × 113 features (last 20 matches + inter-player stats).  
 
-- **Ranking CNN** → outputs Top-11 rankings.  
-- **Fantasy Points CNN** → outputs predicted scores of Top-12 players.  
+- **Ranking [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network)** → outputs Top-11 rankings.  
+- **Fantasy Points [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network)** → outputs predicted scores of Top-12 players.  
 - **Custom Loss:** Player-wise MAE + scaled fantasy point error.  
 - **Output:** 11×1 vector → Dream Team (ensures min 1 player per side).  
 
@@ -136,7 +137,7 @@ flowchart TD
 - ODI → MAE 240, MAPE 25%.  
 - Test → MAE 254, MAPE 24%.  
 
-### D. Explainability – LIME  
+### D. Explainability – [LIME](https://en.wikipedia.org/wiki/LIME_(Local_Interpretable_Model-agnostic_Explanations))  
 - Explains feature influence per player (e.g., “strike rate vs off-spin bowlers contributed most”).  
 - Tradeoff: High computation cost vs interpretability.  
 
@@ -145,15 +146,15 @@ flowchart TD
 ## 8. Challenges  
 1. **Data Discrepancies:** Player name mismatches (aliases, formatting) → custom matching required.  
 2. **Data Volume:** Large JSON → slow parsing, optimized via custom scripts.  
-3. **Accuracy vs Interpretability:** CNN accurate but opaque → LIME mitigated but costly.  
+3. **Accuracy vs Interpretability:** [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) accurate but opaque → [LIME](https://en.wikipedia.org/wiki/LIME_(Local_Interpretable_Model-agnostic_Explanations)) mitigated but costly.  
 4. **Open-source LLM Limitations:** Ollama chatbot → slower, less accurate vs paid APIs.  
 
 ---
 
 ## 9. Conclusion  
-- The **dual CNN architecture (Ranking + Fantasy Points)** clearly outperformed regression, MLPs, and LSTMs.  
+- The **dual [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network) architecture (Ranking + Fantasy Points)** clearly outperformed regression, MLPs, and LSTMs.  
 - **20-match aggregation** gave best stability and accuracy.  
-- LIME explainability increased user trust despite computation overhead.  
+- [LIME](https://en.wikipedia.org/wiki/LIME_(Local_Interpretable_Model-agnostic_Explanations)) explainability increased user trust despite computation overhead.  
 - Product integrates **prediction + personalization + GenAI tools** for an engaging fantasy experience.  
 
 ---
@@ -170,4 +171,3 @@ flowchart TD
 - Replace Ollama with **enterprise-grade LLM APIs** for better chatbot accuracy and continuity.  
 
 ---
-
