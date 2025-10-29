@@ -1,0 +1,3 @@
+[submodule "learner-space-courses/2024-wncc-machine-learning-ls"]
+	path = learner-space-courses/2024-wncc-machine-learning-ls
+	url = https://github.com/wncc/Machine-Learning-LS-24.git
