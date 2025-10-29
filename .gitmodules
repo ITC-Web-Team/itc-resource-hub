@@ -4,3 +4,6 @@
 [submodule "learner-space-courses/2024-wncc-web-development-ls"]
 	path = learner-space-courses/2024-wncc-web-development-ls
 	url = https://github.com/wncc/Web-Development-LS-24.git
+[submodule "learner-space-courses/2025-erciitb-control-theory"]
+	path = learner-space-courses/2025-erciitb-control-theory
+	url = https://github.com/erciitb/LS2025_Control_Theory.git
