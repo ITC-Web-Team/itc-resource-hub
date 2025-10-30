@@ -11,3 +11,7 @@
 	path = learner-space-courses/2025-wncc-machine-learning-ls
 	url = https://github.com/wncc/Machine-Learning-LS-25
 	branch = main
+[submodule "learner-space-courses/2025-wncc-web-dev-ls"]
+	path = learner-space-courses/2025-wncc-web-dev-ls
+	url = https://github.com/wncc/Web-Dev--LS-25
+	branch = main
