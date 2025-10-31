@@ -15,3 +15,9 @@
 	path = learner-space-courses/2025-wncc-web-dev-ls
 	url = https://github.com/wncc/Web-Dev--LS-25
 	branch = main
+[submodule "club-projects/club-projects/Hello-FOSS-25_Instiforum"]
+	path = club-projects/club-projects/Hello-FOSS-25_Instiforum
+	url = https://github.com/wncc/Hello-FOSS-25_Instiforum
+[submodule "club-projects/Hello-FOSS-25_Visionflow"]
+	path = club-projects/Hello-FOSS-25_Visionflow
+	url = https://github.com/wncc/Hello-FOSS-25_Visionflow
